@@ -14,6 +14,109 @@ tags:
   - name: quantum_code
     description: Everything about your quantum service code and circuits
 paths:
+ /circuit/Prueba1:
+    get:
+      tags:
+        - quantum_code
+      summary: Prueba1
+      description: ''
+      operationId: Prueba1
+      parameters:
+        - name: machine
+          in: query
+          description: Maquina donde ejecutar Prueba 1 de exposicion de programas como servicio
+          required: true
+          style: form
+          explode: false
+          deprecated: true
+          schema:
+            type: string
+        - name: shots
+          in: query
+          description: Number of shots
+          required: true
+          style: form
+          explode: false
+          deprecated: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: Invalid execution
+      x-quantumCode: 'https://algassert.com/quirk#circuit={%22cols%22:[[%22H%22,%22H%22],[%22Measure%22],[1,%22Measure%22]]}'
+      x-quantumProvider: 'aws'
+
+/circuit/Prueba2:
+    post:
+      tags:
+        - quantum_code
+      summary: Prueba2 de programa cuantico expuesto como servicio 
+      description: ''
+      operationId: Prueba2
+      parameters:
+        - name: machine
+          in: query
+          description: Prueba2
+          required: true
+          style: form
+          explode: false
+          deprecated: true
+          schema:
+            type: string
+        - name: shots
+          in: query
+          description: Number of shots
+          required: true
+          style: form
+          explode: false
+          deprecated: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: Invalid execution
+      x-quantumCodeQASM: '"OPENQASM 3.0;\ninclude "stdgates.inc";\nqubit[4] q;\nbit[4] c;\nbit[5] c0;\nh q[0];\nh q[1];\nmeasure q[0] -> c[0];\nmeasure q[1] -> c0[0];"'
+      x-quantumCode: null
+      x-quantumProvider: 'ibm'
+      
+  /circuit/Prueba3:
+    get:
+      tags:
+        - quantum_code
+      summary: Prueba3
+      description: ''
+      operationId: Prueba3
+      parameters:
+        - name: machine
+          in: query
+          description: Maquina donde ejecutar Prueba 3 de exposicion de programas como servicio
+          required: true
+          style: form
+          explode: false
+          deprecated: true
+          schema:
+            type: string
+        - name: shots
+          in: query
+          description: Number of shots
+          required: true
+          style: form
+          explode: false
+          deprecated: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: Invalid execution
+      x-quantumCode: 'https://algassert.com/quirk#circuit={%22cols%22:[[%22H%22,%22H%22],[%22%E2%80%A2%22,%22X%22],[%22Measure%22],[1,%22Measure%22]]}'
+      x-quantumProvider: 'aws'
+
 
   /circuit/maxcut3qubitsQASM:
     post:
